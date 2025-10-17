@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Binance Recommender — مخطط شموع</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chart.js and financial plugin + annotation plugin from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@4.0.0/dist/chartjs-chart-financial.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.1.0/dist/chartjs-plugin-annotation.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Binance Recommender</h1>
+      <p class="subtitle">مخطط شموع + توصية مع خطوط الدخول/وقف/هدف</p>
+    </div>
+    <div class="controls">
+      <input id="symbolInput" type="text" placeholder="اكتب زوج مثل BTCUSDT أو ETHUSDT" />
+      <button id="updateChartBtn">🔁 تحديث الأسعار</button>
+      <button id="showLastRecBtn">📈 عرض التوصية الأخيرة</button>
+      <label class="api-label">API Key (محليًا فقط)</label>
+    </div>
+  </header>
+
+  <main class="container-single">
+    <section class="panel chart-panel glass">
+      <div class="panel-header">
+        <h2 id="chartTitle">مخطط الشمعة</h2>
+        <small id="chartSubtitle">ادخل رمز زوج التداول ثم اضغط تحديث</small>
+      </div>
+      <canvas id="candlesChart" height="400"></canvas>
+      <div class="chart-controls">
+        <label>Interval</label>
+        <select id="chartInterval">
+          <option value="1m">1m</option>
+          <option value="5m">5m</option>
+          <option value="15m">15m</option>
+          <option value="1h" selected>1h</option>
+          <option value="4h">4h</option>
+          <option value="1d">1d</option>
+        </select>
+        <label>Limit</label>
+        <select id="chartLimit">
+          <option value="100">100</option>
+          <option value="200" selected>200</option>
+          <option value="400">400</option>
+        </select>
+      </div>
+      <div class="legend muted">خط أزرق: Entry — خط أحمر: Stop Loss — خط أخضر: Take Profit</div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="muted">ملاحظة: المفاتيح إن حطيتها محفوظة فقط في ملف الـJS على جهازك — يفضل عدم نشرها.</div>
+  </footer>
+
+  <script src="script_chart.js"></script>
+</body>
+</html>
