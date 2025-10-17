@@ -1,13 +1,14 @@
 /*
 script_chart.js  – patched for GitHub Pages (CORS-safe)
-- uses https://data.binance.com  (public endpoint, no-CORS issues)
-- keeps your read-only key in headers (optional)
-- clear network-error message
+– uses https://data.binance.com  (public endpoint, no-CORS issues)
+– keeps your read-only key in headers (optional)
+– clear network-error message
 */
 const BINANCE_API_KEY = "O8rmKGFBvpqWzqZlAksLEOzvf7ahjVIgpL0SSsRRuki6Kb9tyJZ7BxJ7i6WvLp8r"; // read-only
 const ctx = document.getElementById('candlesChart').getContext('2d');
 let candlesChart = null;
 let lastRecommendation = null;
+
 
 /* ---------- helpers ---------- */
 const toCandleData = k => k.map(d => ({
